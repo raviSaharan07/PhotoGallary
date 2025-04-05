@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.ksp)
 }
 
 android {
@@ -53,7 +54,13 @@ dependencies {
     implementation(libs.square.retrofit)    //Retrofit
     implementation(libs.square.okhttp3)     //okhttp3
     implementation(libs.android.coroutine) //Android Coroutine
-    implementation(libs.converter.scalars) //Converter
+
+    implementation(libs.square.moshi) //Moshi Core Dependency
+    ksp(libs.square.moshi.kotlin.codegen) //Moshi Kotlin Codegen
+    implementation(libs.moshi.converter) //Moshi Converter for Retrofit Integration
+
+    implementation(libs.coils) //Coil Image Loader
+    implementation(libs.coil.okhttp3) //Coil Okhttp3 Integration
 
     testImplementation(libs.junit)
 
